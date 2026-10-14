@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {POST} from '../api/recipes.mjs';
+const recipe={title:'Quick Tomato Rice',meal:'dinner',time:20,cal:330,protein:7,carbs:58,fat:8,benefits:'Energy from rice',ingredients:['rice','tomatoes','olive oil'],steps:['Cook rice until tender.','Sauté tomatoes and stir into cooked rice.']};
+const options={pantry:[{name:'rice',qty:2,unit:'cups'}],diet:'vegan',meal:'dinner',maxTime:30,avoid:''};
+const req=()=>new Request('https://fridge-chef.vercel.app/api/recipes',{method:'POST',headers:{origin:'https://fridge-chef.vercel.app',host:'fridge-chef.vercel.app','content-type':'application/json'},body:JSON.stringify(options)});
+const fetchOriginal=globalThis.fetch;process.env.GEMINI_API_KEY='test-gemini';process.env.GROQ_API_KEY='test-groq';let calls=[];
+globalThis.fetch=async(url)=>{calls.push(url);if(url.includes('generativelanguage'))return new Response('{}',{status:429});return Response.json({choices:[{message:{content:JSON.stringify({recipes:[recipe]})}}]});};
+let res=await POST(req());assert.equal(res.status,200);assert.equal((await res.json()).provider,'groq');assert.equal(calls.length,2);
+calls=[];globalThis.fetch=async(url)=>{calls.push(url);if(url.includes('generativelanguage'))return Response.json({candidates:[{content:{parts:[{text:JSON.stringify({recipes:[recipe]})}]}}]});throw Error('Groq should not be invoked');};
+res=await POST(req());assert.equal((await res.json()).provider,'gemini');assert.equal(calls.length,1);
+calls=[];globalThis.fetch=async()=>new Response('unavailable',{status:503});res=await POST(req());assert.equal(res.status,502);
+res=await POST(new Request('https://fridge-chef.vercel.app/api/recipes',{method:'POST',headers:{host:'fridge-chef.vercel.app',origin:'https://attacker.example'},body:JSON.stringify(options)}));assert.equal(res.status,403);
+globalThis.fetch=fetchOriginal;console.log('PASS: Gemini primary, Groq fallback, provider outage, cross-origin check');
