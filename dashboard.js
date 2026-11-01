@@ -4,7 +4,7 @@ document.addEventListener('click', event => {
  if (!button) return;
  const action = button.dataset.quick;
  if (action === 'dish') {
-   document.getElementById('cookGuidePanel')?.scrollIntoView({behavior:'smooth',block:'start'});
+   document.querySelector('.tab[data-tab="guide"]')?.click();
    document.getElementById('dishName')?.focus({preventScroll:true});
  } else {
    document.querySelector(`.tab[data-tab="${action}"]`)?.click();
