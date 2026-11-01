@@ -25,3 +25,7 @@ All other AI integrations and the manual provider selector have been removed. Me
 For Vercel set server-only `GEMINI_API_KEY`; optional `GEMINI_MODEL` defaults to `gemini-2.5-flash-lite`. Remove `OPENAI_API_KEY`, `OPENAI_MODEL`, `MODEL_API_KEY`, `MUSE_MODEL`, and any historical Groq variables from Vercel after confirming they aren't used by other deployed services. Redeploy. Never expose credentials in the browser.
 
 Run tests with `node backend.test.cjs`. Local static servers cannot execute `/api/recipes`; use a Vercel preview deployment or `vercel dev` for live provider tests. Serverless in-memory rate limiting is not adequate for public use; add shared rate limiting, bot protection, and provider spending alerts. Ingredient and food safety details are informational, not verified.
+
+
+## Focused UI redesign
+The Cook page now prioritizes cooking by name, with quick action tiles, redesigned hero, and collapsible cuisine / Gemini panels. All existing element IDs and app logic are retained; dashboard.js adds only shortcut navigation. The existing local-first then Gemini cooking flow is unchanged. Cache version bumped for PWA updates.

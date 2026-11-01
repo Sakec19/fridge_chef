@@ -39,3 +39,56 @@ button.secondary,.file-label,.chip,.cuisine-chip,.tag,.day-tile.rest,.summary-ca
 .theme-option:has(input:checked){background:var(--tint);border-color:#65b98a;color:var(--accent-text)}
 :root[data-theme="dark"] .hero{background:#22583e}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]):not([data-theme="dark"]) .hero{background:#22583e}}
+
+/* Fridge Chef 2026 — focused, airy cooking dashboard */
+:root{--ui-radius:22px;--ui-shadow:0 12px 34px rgba(20,62,42,.055)}
+body{background:var(--page-bg);color:var(--foreground)}
+.shell{max-width:1120px}
+.top{padding:17px 0 23px}
+.brand .logo{width:48px;height:48px;padding:0;overflow:hidden;border-radius:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 15px #134e3030}
+.brand .logo img{display:block;width:100%;height:100%;object-fit:cover}
+.brand strong{font-size:21px;letter-spacing:-.8px}
+.brand small{font-size:12px}
+.hero{position:relative;min-height:232px;margin-bottom:17px;border-radius:29px;background:radial-gradient(circle at 86% 15%,#417d4e 0,transparent 45%),linear-gradient(118deg,#133f31,#206443 70%,#2f8051);box-shadow:0 16px 38px #154c3130;padding:36px 40px}
+.hero:before{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(circle at 80% 112%,#b0d76b44,transparent 50%);pointer-events:none}
+.hero h1{font-size:clamp(32px,4.5vw,49px);max-width:480px;letter-spacing:-2.1px;position:relative}
+.hero p{max-width:425px;position:relative}
+.hero .eyebrow{color:#c5e9bb}
+.hero-art{font-size:unset;transform:rotate(8deg);filter:drop-shadow(0 15px 19px #0c3c3466);flex-shrink:0;position:relative}
+.hero-art img{width:clamp(95px,14vw,158px);height:auto;display:block;border-radius:30px}
+.quick-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 23px}
+.quick-action{border:1px solid var(--border-ui);background:var(--surface);color:var(--foreground);border-radius:19px;display:flex;align-items:center;text-align:left;gap:12px;padding:16px;box-shadow:var(--ui-shadow);transition:transform .18s,box-shadow .18s,border-color .18s;min-width:0}
+.quick-action:hover{transform:translateY(-3px);border-color:#69b68b;box-shadow:0 14px 30px #164b301a}
+.quick-action:focus-visible{outline:3px solid #5ba678;outline-offset:3px}
+.quick-icon{width:43px;height:43px;display:grid;place-items:center;font-size:23px;border-radius:14px;background:var(--tint);flex-shrink:0}
+.quick-action strong,.quick-action small{display:block}.quick-action strong{font-size:14px;line-height:1.3;letter-spacing:-.25px}.quick-action small{font-size:11px;color:var(--secondary-text);margin-top:3px}.quick-arrow{margin-left:auto;font-size:18px;color:var(--secondary-text)}
+.panel{border-radius:var(--ui-radius);padding:25px;box-shadow:var(--ui-shadow);margin-bottom:15px}
+.cook-guide-panel{border:1px solid #a4d6b3;background:linear-gradient(145deg,var(--surface),var(--surface-soft))}
+.cook-guide-panel .section-heading{margin-top:0}.cook-guide-panel .section-heading .muted{font-size:10px;letter-spacing:1.1px;font-weight:850;color:#4a9b67}
+#dishSearchForm{display:flex;gap:10px;margin-top:16px}
+#dishSearchForm input:first-child{flex:1;min-width:160px;font-size:15px;min-height:51px;background:var(--surface)}
+#dishSearchForm button{min-height:51px;white-space:nowrap}
+#dishSuggestions .chip{font-size:12px}
+.pantry-panel{background:var(--surface)}
+.feature-drawer{background:var(--surface);border:1px solid var(--border-ui);border-radius:19px;margin-bottom:14px;overflow:hidden;box-shadow:var(--ui-shadow)}
+.drawer-summary{list-style:none;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px 16px;cursor:pointer;padding:19px 22px;position:relative;padding-right:55px}
+.drawer-summary::-webkit-details-marker{display:none}
+.drawer-summary:after{content:'⌄';position:absolute;right:22px;top:16px;font-size:24px;color:var(--secondary-text);transition:transform .2s}
+.feature-drawer[open] .drawer-summary:after{transform:rotate(180deg)}
+.drawer-heading{font-size:15px;font-weight:800;letter-spacing:-.35px}
+.drawer-summary small{font-size:12px;color:var(--secondary-text)}
+.feature-drawer .panel{box-shadow:none;border:0;border-top:1px solid var(--border-ui);border-radius:0;margin:0;padding:22px;background:var(--surface)}
+.feature-drawer .panel .section-heading{margin-top:0}
+.recipe{box-shadow:var(--ui-shadow);transition:transform .18s,border-color .18s;padding:22px}
+.recipe:hover{transform:translateY(-2px);border-color:#9bcbac}
+.recipe-grid{gap:14px}.recipe h3{letter-spacing:-.35px}
+.primary,.secondary{transition:transform .15s,filter .15s}
+button.primary:hover,button.secondary:hover{filter:brightness(.97)}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #66bb88;outline-offset:2px}
+.bottom{box-shadow:0 -7px 35px #0d322119}
+.tab.selected{border-radius:15px}
+.page-title{padding-top:22px}
+@media(min-width:850px){#cook .pantry-panel{max-width:none}.recipe-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.quick-actions{gap:8px}.quick-action{flex-direction:column;align-items:flex-start;gap:6px;padding:13px}.quick-action small{display:none}.quick-icon{width:40px;height:40px}.quick-arrow{display:none}.hero{padding:27px;min-height:205px}.hero-art img{width:98px}.hero h1{font-size:32px}.drawer-summary small{flex-basis:100%}}
+@media(max-width:440px){.hero{padding:24px;min-height:193px;align-items:center}.hero-art img{width:76px}.hero h1{font-size:29px;letter-spacing:-1.2px}.hero p{font-size:12px}.hero .eyebrow{font-size:9px;letter-spacing:1.2px}.quick-action strong{font-size:11px}.quick-icon{font-size:20px;width:35px;height:35px}.panel{padding:18px}#dishSearchForm{flex-direction:column}#dishSearchForm button{width:100%}.drawer-summary{padding:17px 45px 17px 16px}.drawer-summary:after{right:17px}}
+@media(prefers-reduced-motion:reduce){.quick-action,.recipe,.drawer-summary:after{transition:none}.quick-action:hover,.recipe:hover{transform:none}}
