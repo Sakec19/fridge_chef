@@ -1,4 +1,4 @@
-# Fridge Chef app icon update
+# Flavyntra app icon update
 
 The supplied glossy recipe bowl icon is now used for the PWA install icon (192px, 512px), iOS home-screen icon (180px), and browser favicons (16px, 32px). The HTML, web manifest, and service-worker asset cache have been updated. No AI, diet, cuisine, or theme logic was changed.
 

@@ -1,4 +1,4 @@
-# Fridge Chef
+# Flavyntra
 
 A no-build, offline-first Progressive Web App. Includes pantry, dietary-filtered recipe matching, monthly dinner planning, planning for selected days, nutrition estimates, shopping lists, local persistence, and backups.
 
